@@ -81,7 +81,7 @@ public final class DefaultObjectNodeConverterBuilder {
         this.registerMapper(new ByteArrayNodeMapper());
 
 
-        //大数字类型
+        // 大数字类型
         this.registerMapper(new BigIntegerNodeMapper());
         this.registerMapper(new BigDecimalNodeMapper());
 
