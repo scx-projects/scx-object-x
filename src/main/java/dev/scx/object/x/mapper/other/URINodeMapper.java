@@ -23,7 +23,7 @@ public final class URINodeMapper implements TypeNodeMapper<URI, StringNode> {
     }
 
     @Override
-    public Class<StringNode> nodeType() {
+    public Class<StringNode> nodeType(NodeToObjectContext context) {
         return StringNode.class;
     }
 

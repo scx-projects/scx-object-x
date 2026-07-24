@@ -53,7 +53,7 @@ public final class RecordNodeMapper implements TypeNodeMapper<Object, ObjectNode
     }
 
     @Override
-    public Class<ObjectNode> nodeType() {
+    public Class<ObjectNode> nodeType(NodeToObjectContext context) {
         return ObjectNode.class;
     }
 

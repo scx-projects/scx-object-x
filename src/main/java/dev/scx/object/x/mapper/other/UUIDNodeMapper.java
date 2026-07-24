@@ -23,7 +23,7 @@ public final class UUIDNodeMapper implements TypeNodeMapper<UUID, StringNode> {
     }
 
     @Override
-    public Class<StringNode> nodeType() {
+    public Class<StringNode> nodeType(NodeToObjectContext context) {
         return StringNode.class;
     }
 

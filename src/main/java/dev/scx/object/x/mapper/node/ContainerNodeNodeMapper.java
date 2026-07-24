@@ -20,7 +20,7 @@ public final class ContainerNodeNodeMapper implements TypeNodeMapper<ContainerNo
     }
 
     @Override
-    public Class<ContainerNode> nodeType() {
+    public Class<ContainerNode> nodeType(NodeToObjectContext context) {
         return ContainerNode.class;
     }
 

@@ -28,7 +28,7 @@ public final class ShortNodeMapper implements TypeNodeMapper<Short, ValueNode> {
     }
 
     @Override
-    public Class<ValueNode> nodeType() {
+    public Class<ValueNode> nodeType(NodeToObjectContext context) {
         return ValueNode.class;
     }
 

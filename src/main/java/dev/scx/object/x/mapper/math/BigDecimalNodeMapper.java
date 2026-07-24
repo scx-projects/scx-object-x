@@ -23,7 +23,7 @@ public final class BigDecimalNodeMapper implements TypeNodeMapper<BigDecimal, Va
     }
 
     @Override
-    public Class<ValueNode> nodeType() {
+    public Class<ValueNode> nodeType(NodeToObjectContext context) {
         return ValueNode.class;
     }
 

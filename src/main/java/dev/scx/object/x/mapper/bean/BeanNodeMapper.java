@@ -70,7 +70,7 @@ public final class BeanNodeMapper implements TypeNodeMapper<Object, ObjectNode> 
     }
 
     @Override
-    public Class<ObjectNode> nodeType() {
+    public Class<ObjectNode> nodeType(NodeToObjectContext context) {
         return ObjectNode.class;
     }
 

@@ -20,7 +20,7 @@ public final class ObjectNodeNodeMapper implements TypeNodeMapper<ObjectNode, Ob
     }
 
     @Override
-    public Class<ObjectNode> nodeType() {
+    public Class<ObjectNode> nodeType(NodeToObjectContext context) {
         return ObjectNode.class;
     }
 

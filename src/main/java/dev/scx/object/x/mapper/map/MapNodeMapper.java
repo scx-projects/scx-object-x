@@ -67,7 +67,7 @@ public final class MapNodeMapper implements TypeNodeMapper<Map<?, ?>, ObjectNode
     }
 
     @Override
-    public Class<ObjectNode> nodeType() {
+    public Class<ObjectNode> nodeType(NodeToObjectContext context) {
         return ObjectNode.class;
     }
 

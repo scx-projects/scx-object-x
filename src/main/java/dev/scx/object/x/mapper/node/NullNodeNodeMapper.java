@@ -21,7 +21,7 @@ public final class NullNodeNodeMapper implements TypeNodeMapper<NullNode, NullNo
     }
 
     @Override
-    public Class<NullNode> nodeType() {
+    public Class<NullNode> nodeType(NodeToObjectContext context) {
         return NullNode.class;
     }
 

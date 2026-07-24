@@ -16,7 +16,7 @@ public interface TypeNodeMapper<V, N extends Node> {
     TypeInfo valueType();
 
     /// Node 的类型
-    Class<N> nodeType();
+    Class<? extends N> nodeType(NodeToObjectContext context);
 
     /// 将 值 转换为 Node.
     ///

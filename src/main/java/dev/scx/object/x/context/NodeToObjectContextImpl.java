@@ -106,7 +106,7 @@ public final class NodeToObjectContextImpl implements NodeToObjectContext {
                 return (T) mapper.nullNodeToValue(this);
             }
 
-            var expectedNodeType = mapper.nodeType();
+            var expectedNodeType = mapper.nodeType(this);
 
             // 2. 匹配成功直接转换
             if (expectedNodeType.isInstance(node)) {

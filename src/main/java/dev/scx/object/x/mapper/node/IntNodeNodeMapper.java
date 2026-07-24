@@ -28,7 +28,7 @@ public final class IntNodeNodeMapper implements TypeNodeMapper<IntNode, ValueNod
     }
 
     @Override
-    public Class<ValueNode> nodeType() {
+    public Class<ValueNode> nodeType(NodeToObjectContext context) {
         return ValueNode.class;
     }
 

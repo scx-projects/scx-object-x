@@ -34,7 +34,7 @@ public final class TemporalAmountNodeMapper<T extends TemporalAmount> implements
     }
 
     @Override
-    public Class<StringNode> nodeType() {
+    public Class<StringNode> nodeType(NodeToObjectContext context) {
         return StringNode.class;
     }
 

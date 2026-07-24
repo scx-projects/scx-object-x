@@ -28,7 +28,7 @@ public final class ByteNodeMapper implements TypeNodeMapper<Byte, ValueNode> {
     }
 
     @Override
-    public Class<ValueNode> nodeType() {
+    public Class<ValueNode> nodeType(NodeToObjectContext context) {
         return ValueNode.class;
     }
 

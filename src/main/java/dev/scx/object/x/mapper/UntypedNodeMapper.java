@@ -24,7 +24,7 @@ public final class UntypedNodeMapper implements TypeNodeMapper<Object, Node> {
     }
 
     @Override
-    public Class<Node> nodeType() {
+    public Class<Node> nodeType(NodeToObjectContext context) {
         return Node.class;
     }
 
