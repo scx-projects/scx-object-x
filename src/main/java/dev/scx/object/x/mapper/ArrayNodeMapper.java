@@ -21,7 +21,7 @@ public final class ArrayNodeMapper implements TypeNodeMapper<Object, ArrayNode> 
     // 性能优化: 缓存 componentType 对应的 TypeNodeMapper, 避免在每个元素转换时重复执行 findMapper.
     private TypeNodeMapper<?, ?> componentNodeMapper;
 
-    ArrayNodeMapper(ArrayTypeInfo arrayTypeInfo) {
+    public ArrayNodeMapper(ArrayTypeInfo arrayTypeInfo) {
         this.arrayTypeInfo = arrayTypeInfo;
         this.componentType = arrayTypeInfo.componentType();
         this.componentNodeMapper = null;
