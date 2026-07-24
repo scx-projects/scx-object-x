@@ -1,7 +1,11 @@
 package dev.scx.object.x;
 
 import dev.scx.object.x.mapper.*;
+import dev.scx.object.x.mapper.atomic.AtomicBooleanNodeMapper;
+import dev.scx.object.x.mapper.atomic.AtomicIntegerNodeMapper;
+import dev.scx.object.x.mapper.atomic.AtomicLongNodeMapper;
 import dev.scx.object.x.mapper.bean.BeanNodeMapperFactory;
+import dev.scx.object.x.mapper.byte_array.ByteArrayNodeMapper;
 import dev.scx.object.x.mapper.charset.CharsetNodeMapperFactory;
 import dev.scx.object.x.mapper.collection.CollectionNodeMapperFactory;
 import dev.scx.object.x.mapper.file.FileNodeMapper;
@@ -73,6 +77,10 @@ public final class DefaultObjectNodeConverterBuilder {
         this.registerMapper(new StringNodeMapper());
 
 
+        // byte[] 特化
+        this.registerMapper(new ByteArrayNodeMapper());
+
+
         //大数字类型
         this.registerMapper(new BigIntegerNodeMapper());
         this.registerMapper(new BigDecimalNodeMapper());
@@ -120,6 +128,13 @@ public final class DefaultObjectNodeConverterBuilder {
 
         // File
         this.registerMapper(new FileNodeMapper());
+
+
+        // Atomic 相关
+        this.registerMapper(new AtomicIntegerNodeMapper());
+        this.registerMapper(new AtomicLongNodeMapper());
+        this.registerMapper(new AtomicBooleanNodeMapper());
+
 
         // Other
         this.registerMapper(new UUIDNodeMapper());
