@@ -27,7 +27,7 @@ public final class EnumNodeMapper<E extends Enum<E>> implements TypeNodeMapper<E
     }
 
     @Override
-    public Class<StringNode> nodeType() {
+    public Class<StringNode> nodeType(NodeToObjectContext context) {
         return StringNode.class;
     }
 

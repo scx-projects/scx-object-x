@@ -20,7 +20,7 @@ public final class ArrayNodeNodeMapper implements TypeNodeMapper<ArrayNode, Arra
     }
 
     @Override
-    public Class<ArrayNode> nodeType() {
+    public Class<ArrayNode> nodeType(NodeToObjectContext context) {
         return ArrayNode.class;
     }
 

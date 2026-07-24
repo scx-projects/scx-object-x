@@ -38,7 +38,7 @@ public final class TemporalAccessorNodeMapper<T extends TemporalAccessor> implem
     }
 
     @Override
-    public Class<ValueNode> nodeType() {
+    public Class<ValueNode> nodeType(NodeToObjectContext context) {
         return ValueNode.class;
     }
 

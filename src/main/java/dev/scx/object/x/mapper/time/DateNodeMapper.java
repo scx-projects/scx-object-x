@@ -30,7 +30,7 @@ public final class DateNodeMapper implements TypeNodeMapper<Date, ValueNode> {
     }
 
     @Override
-    public Class<ValueNode> nodeType() {
+    public Class<ValueNode> nodeType(NodeToObjectContext context) {
         return ValueNode.class;
     }
 

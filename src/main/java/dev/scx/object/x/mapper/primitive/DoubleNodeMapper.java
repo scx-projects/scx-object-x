@@ -28,7 +28,7 @@ public final class DoubleNodeMapper implements TypeNodeMapper<Double, ValueNode>
     }
 
     @Override
-    public Class<ValueNode> nodeType() {
+    public Class<ValueNode> nodeType(NodeToObjectContext context) {
         return ValueNode.class;
     }
 

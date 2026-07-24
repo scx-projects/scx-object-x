@@ -21,7 +21,7 @@ public final class NodeNodeMapper implements TypeNodeMapper<Node, Node> {
     }
 
     @Override
-    public Class<Node> nodeType() {
+    public Class<Node> nodeType(NodeToObjectContext context) {
         return Node.class;
     }
 

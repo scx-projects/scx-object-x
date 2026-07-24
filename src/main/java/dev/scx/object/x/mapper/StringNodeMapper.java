@@ -20,7 +20,7 @@ public final class StringNodeMapper implements TypeNodeMapper<String, ValueNode>
     }
 
     @Override
-    public Class<ValueNode> nodeType() {
+    public Class<ValueNode> nodeType(NodeToObjectContext context) {
         return ValueNode.class;
     }
 

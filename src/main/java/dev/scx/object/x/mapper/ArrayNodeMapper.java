@@ -33,7 +33,7 @@ public final class ArrayNodeMapper implements TypeNodeMapper<Object, ArrayNode> 
     }
 
     @Override
-    public Class<ArrayNode> nodeType() {
+    public Class<ArrayNode> nodeType(NodeToObjectContext context) {
         return ArrayNode.class;
     }
 

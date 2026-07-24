@@ -30,7 +30,7 @@ public final class CharsetNodeMapper implements TypeNodeMapper<Charset, StringNo
     }
 
     @Override
-    public Class<StringNode> nodeType() {
+    public Class<StringNode> nodeType(NodeToObjectContext context) {
         return StringNode.class;
     }
 

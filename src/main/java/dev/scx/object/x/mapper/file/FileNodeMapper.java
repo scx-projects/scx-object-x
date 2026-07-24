@@ -23,7 +23,7 @@ public final class FileNodeMapper implements TypeNodeMapper<File, StringNode> {
     }
 
     @Override
-    public Class<StringNode> nodeType() {
+    public Class<StringNode> nodeType(NodeToObjectContext context) {
         return StringNode.class;
     }
 

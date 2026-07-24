@@ -37,7 +37,7 @@ public final class CollectionNodeMapper implements TypeNodeMapper<Collection<?>,
     }
 
     @Override
-    public Class<ArrayNode> nodeType() {
+    public Class<ArrayNode> nodeType(NodeToObjectContext context) {
         return ArrayNode.class;
     }
 
