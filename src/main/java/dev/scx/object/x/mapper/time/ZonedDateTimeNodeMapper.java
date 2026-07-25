@@ -23,7 +23,7 @@ import static dev.scx.reflect.ScxReflect.typeOf;
 /// @author scx567888
 public final class ZonedDateTimeNodeMapper implements TypeNodeMapper<ZonedDateTime, ValueNode> {
 
-    private static final ZonedDateTimeNodeMapperOptions TEMPORAL_ACCESSOR_NODE_MAPPER_OPTIONS = new ZonedDateTimeNodeMapperOptions();
+    private static final ZonedDateTimeNodeMapperOptions DEFAULT_OPTIONS = new ZonedDateTimeNodeMapperOptions();
 
     private final Class<? extends TemporalAccessor> type;
     private final TemporalQuery<ZonedDateTime> temporalQuery;
@@ -45,7 +45,7 @@ public final class ZonedDateTimeNodeMapper implements TypeNodeMapper<ZonedDateTi
 
     @Override
     public ValueNode valueToNode(ZonedDateTime value, ObjectToNodeContext context) throws ObjectToNodeException {
-        var options = context.getMapperOptions(ZonedDateTimeNodeMapperOptions.class, TEMPORAL_ACCESSOR_NODE_MAPPER_OPTIONS);
+        var options = context.getMapperOptions(ZonedDateTimeNodeMapperOptions.class, DEFAULT_OPTIONS);
         // 处理时间戳格式
         if (options.useTimestamp()) {
             try {
@@ -65,7 +65,7 @@ public final class ZonedDateTimeNodeMapper implements TypeNodeMapper<ZonedDateTi
 
     @Override
     public ZonedDateTime nodeToValue(ValueNode node, NodeToObjectContext context) throws NodeToObjectException {
-        var options = context.getMapperOptions(ZonedDateTimeNodeMapperOptions.class, TEMPORAL_ACCESSOR_NODE_MAPPER_OPTIONS);
+        var options = context.getMapperOptions(ZonedDateTimeNodeMapperOptions.class, DEFAULT_OPTIONS);
         // 处理时间戳格式
         if (options.useTimestamp()) {
             try {

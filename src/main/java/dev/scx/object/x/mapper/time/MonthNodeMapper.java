@@ -23,7 +23,7 @@ import static dev.scx.reflect.ScxReflect.typeOf;
 /// @author scx567888
 public final class MonthNodeMapper implements TypeNodeMapper<Month, ValueNode> {
 
-    private static final MonthNodeMapperOptions TEMPORAL_ACCESSOR_NODE_MAPPER_OPTIONS = new MonthNodeMapperOptions();
+    private static final MonthNodeMapperOptions DEFAULT_OPTIONS = new MonthNodeMapperOptions();
 
     private final Class<? extends TemporalAccessor> type;
     private final TemporalQuery<Month> temporalQuery;
@@ -45,7 +45,7 @@ public final class MonthNodeMapper implements TypeNodeMapper<Month, ValueNode> {
 
     @Override
     public ValueNode valueToNode(Month value, ObjectToNodeContext context) throws ObjectToNodeException {
-        var options = context.getMapperOptions(MonthNodeMapperOptions.class, TEMPORAL_ACCESSOR_NODE_MAPPER_OPTIONS);
+        var options = context.getMapperOptions(MonthNodeMapperOptions.class, DEFAULT_OPTIONS);
         // 处理时间戳格式
         if (options.useTimestamp()) {
             try {
@@ -65,7 +65,7 @@ public final class MonthNodeMapper implements TypeNodeMapper<Month, ValueNode> {
 
     @Override
     public Month nodeToValue(ValueNode node, NodeToObjectContext context) throws NodeToObjectException {
-        var options = context.getMapperOptions(MonthNodeMapperOptions.class, TEMPORAL_ACCESSOR_NODE_MAPPER_OPTIONS);
+        var options = context.getMapperOptions(MonthNodeMapperOptions.class, DEFAULT_OPTIONS);
         // 处理时间戳格式
         if (options.useTimestamp()) {
             try {

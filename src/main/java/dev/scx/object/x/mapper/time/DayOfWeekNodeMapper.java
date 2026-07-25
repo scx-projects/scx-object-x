@@ -23,7 +23,7 @@ import static dev.scx.reflect.ScxReflect.typeOf;
 /// @author scx567888
 public final class DayOfWeekNodeMapper implements TypeNodeMapper<DayOfWeek, ValueNode> {
 
-    private static final DayOfWeekNodeMapperOptions TEMPORAL_ACCESSOR_NODE_MAPPER_OPTIONS = new DayOfWeekNodeMapperOptions();
+    private static final DayOfWeekNodeMapperOptions DEFAULT_OPTIONS = new DayOfWeekNodeMapperOptions();
 
     private final Class<? extends TemporalAccessor> type;
     private final TemporalQuery<DayOfWeek> temporalQuery;
@@ -45,7 +45,7 @@ public final class DayOfWeekNodeMapper implements TypeNodeMapper<DayOfWeek, Valu
 
     @Override
     public ValueNode valueToNode(DayOfWeek value, ObjectToNodeContext context) throws ObjectToNodeException {
-        var options = context.getMapperOptions(DayOfWeekNodeMapperOptions.class, TEMPORAL_ACCESSOR_NODE_MAPPER_OPTIONS);
+        var options = context.getMapperOptions(DayOfWeekNodeMapperOptions.class, DEFAULT_OPTIONS);
         // 处理时间戳格式
         if (options.useTimestamp()) {
             try {
@@ -65,7 +65,7 @@ public final class DayOfWeekNodeMapper implements TypeNodeMapper<DayOfWeek, Valu
 
     @Override
     public DayOfWeek nodeToValue(ValueNode node, NodeToObjectContext context) throws NodeToObjectException {
-        var options = context.getMapperOptions(DayOfWeekNodeMapperOptions.class, TEMPORAL_ACCESSOR_NODE_MAPPER_OPTIONS);
+        var options = context.getMapperOptions(DayOfWeekNodeMapperOptions.class, DEFAULT_OPTIONS);
         // 处理时间戳格式
         if (options.useTimestamp()) {
             try {

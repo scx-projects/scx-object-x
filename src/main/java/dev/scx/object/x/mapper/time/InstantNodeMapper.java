@@ -22,7 +22,7 @@ import static dev.scx.reflect.ScxReflect.typeOf;
 /// @author scx567888
 public final class InstantNodeMapper implements TypeNodeMapper<Instant, ValueNode> {
 
-    private static final InstantNodeMapperOptions TEMPORAL_ACCESSOR_NODE_MAPPER_OPTIONS = new InstantNodeMapperOptions();
+    private static final InstantNodeMapperOptions DEFAULT_OPTIONS = new InstantNodeMapperOptions();
 
     private final Class<? extends TemporalAccessor> type;
     private final TemporalQuery<Instant> temporalQuery;
@@ -44,7 +44,7 @@ public final class InstantNodeMapper implements TypeNodeMapper<Instant, ValueNod
 
     @Override
     public ValueNode valueToNode(Instant value, ObjectToNodeContext context) throws ObjectToNodeException {
-        var options = context.getMapperOptions(InstantNodeMapperOptions.class, TEMPORAL_ACCESSOR_NODE_MAPPER_OPTIONS);
+        var options = context.getMapperOptions(InstantNodeMapperOptions.class, DEFAULT_OPTIONS);
         // 处理时间戳格式
         if (options.useTimestamp()) {
             try {
@@ -64,7 +64,7 @@ public final class InstantNodeMapper implements TypeNodeMapper<Instant, ValueNod
 
     @Override
     public Instant nodeToValue(ValueNode node, NodeToObjectContext context) throws NodeToObjectException {
-        var options = context.getMapperOptions(InstantNodeMapperOptions.class, TEMPORAL_ACCESSOR_NODE_MAPPER_OPTIONS);
+        var options = context.getMapperOptions(InstantNodeMapperOptions.class, DEFAULT_OPTIONS);
         // 处理时间戳格式
         if (options.useTimestamp()) {
             try {
