@@ -98,8 +98,8 @@ public final class DefaultObjectNodeConverterBuilder {
         this.registerMapper(new YearMonthNodeMapper());
         this.registerMapper(new DayOfWeekNodeMapper());
         this.registerMapper(new InstantNodeMapper());
-        this.registerMapper(new TemporalAmountNodeMapper<>(Duration.class, Duration::toString, Duration::parse));
-        this.registerMapper(new TemporalAmountNodeMapper<>(Period.class, Period::toString, Period::parse));
+        this.registerMapper(new DurationNodeMapper());
+        this.registerMapper(new PeriodNodeMapper());
         this.registerMapper(new DateNodeMapper());
 
 

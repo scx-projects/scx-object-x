@@ -8,24 +8,25 @@ import dev.scx.object.x.mapper.TypeNodeMapper;
 import dev.scx.reflect.TypeInfo;
 
 import java.time.DateTimeException;
+import java.time.Duration;
 import java.time.temporal.TemporalAmount;
 import java.util.function.Function;
 
 import static dev.scx.reflect.ScxReflect.typeOf;
 
-/// TemporalAmountNodeMapper
+/// DurationNodeMapper
 ///
 /// @author scx567888
-public final class TemporalAmountNodeMapper<T extends TemporalAmount> implements TypeNodeMapper<T, StringNode> {
+public final class DurationNodeMapper implements TypeNodeMapper<Duration, StringNode> {
 
-    private final Class<T> type;
-    private final Function<T, String> generator;
-    private final Function<String, T> parser;
+    private final Class<Duration> type;
+    private final Function<Duration, String> generator;
+    private final Function<String, Duration> parser;
 
-    public TemporalAmountNodeMapper(Class<T> type, Function<T, String> generator, Function<String, T> parser) {
-        this.type = type;
-        this.generator = generator;
-        this.parser = parser;
+    public DurationNodeMapper() {
+        this.type = Duration.class;
+        this.generator =  Duration::toString;
+        this.parser = Duration::parse;
     }
 
     @Override
@@ -39,12 +40,12 @@ public final class TemporalAmountNodeMapper<T extends TemporalAmount> implements
     }
 
     @Override
-    public StringNode valueToNode(T value, ObjectToNodeContext context) {
+    public StringNode valueToNode(Duration value, ObjectToNodeContext context) {
         return new StringNode(generator.apply(value));
     }
 
     @Override
-    public T nodeToValue(StringNode node, NodeToObjectContext context) throws NodeToObjectException {
+    public Duration nodeToValue(StringNode node, NodeToObjectContext context) throws NodeToObjectException {
         try {
             return parser.apply(node.asString());
         } catch (DateTimeException e) {
