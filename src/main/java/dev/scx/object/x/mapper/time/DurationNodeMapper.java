@@ -9,7 +9,6 @@ import dev.scx.reflect.TypeInfo;
 
 import java.time.DateTimeException;
 import java.time.Duration;
-import java.util.function.Function;
 
 import static dev.scx.reflect.ScxReflect.typeOf;
 
