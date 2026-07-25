@@ -9,7 +9,6 @@ import dev.scx.reflect.TypeInfo;
 
 import java.time.DateTimeException;
 import java.time.Duration;
-import java.time.temporal.TemporalAmount;
 import java.util.function.Function;
 
 import static dev.scx.reflect.ScxReflect.typeOf;
@@ -25,7 +24,7 @@ public final class DurationNodeMapper implements TypeNodeMapper<Duration, String
 
     public DurationNodeMapper() {
         this.type = Duration.class;
-        this.generator =  Duration::toString;
+        this.generator = Duration::toString;
         this.parser = Duration::parse;
     }
 
