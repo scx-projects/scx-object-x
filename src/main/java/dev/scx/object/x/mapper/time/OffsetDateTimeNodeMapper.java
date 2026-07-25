@@ -23,7 +23,7 @@ import static dev.scx.reflect.ScxReflect.typeOf;
 /// @author scx567888
 public final class OffsetDateTimeNodeMapper implements TypeNodeMapper<OffsetDateTime, ValueNode> {
 
-    private static final TemporalAccessorNodeMapperOptions TEMPORAL_ACCESSOR_NODE_MAPPER_OPTIONS = new TemporalAccessorNodeMapperOptions();
+    private static final OffsetDateTimeNodeMapperOptions TEMPORAL_ACCESSOR_NODE_MAPPER_OPTIONS = new OffsetDateTimeNodeMapperOptions();
 
     private final Class<? extends TemporalAccessor> type;
     private final TemporalQuery<OffsetDateTime> temporalQuery;
@@ -45,7 +45,7 @@ public final class OffsetDateTimeNodeMapper implements TypeNodeMapper<OffsetDate
 
     @Override
     public ValueNode valueToNode(OffsetDateTime value, ObjectToNodeContext context) throws ObjectToNodeException {
-        var options = context.getMapperOptions(TemporalAccessorNodeMapperOptions.class, TEMPORAL_ACCESSOR_NODE_MAPPER_OPTIONS);
+        var options = context.getMapperOptions(OffsetDateTimeNodeMapperOptions.class, TEMPORAL_ACCESSOR_NODE_MAPPER_OPTIONS);
         // 处理时间戳格式
         if (options.useTimestamp()) {
             try {
@@ -65,7 +65,7 @@ public final class OffsetDateTimeNodeMapper implements TypeNodeMapper<OffsetDate
 
     @Override
     public OffsetDateTime nodeToValue(ValueNode node, NodeToObjectContext context) throws NodeToObjectException {
-        var options = context.getMapperOptions(TemporalAccessorNodeMapperOptions.class, TEMPORAL_ACCESSOR_NODE_MAPPER_OPTIONS);
+        var options = context.getMapperOptions(OffsetDateTimeNodeMapperOptions.class, TEMPORAL_ACCESSOR_NODE_MAPPER_OPTIONS);
         // 处理时间戳格式
         if (options.useTimestamp()) {
             try {

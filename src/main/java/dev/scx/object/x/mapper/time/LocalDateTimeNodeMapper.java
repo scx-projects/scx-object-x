@@ -23,7 +23,7 @@ import static dev.scx.reflect.ScxReflect.typeOf;
 /// @author scx567888
 public final class LocalDateTimeNodeMapper implements TypeNodeMapper<LocalDateTime, ValueNode> {
 
-    private static final TemporalAccessorNodeMapperOptions TEMPORAL_ACCESSOR_NODE_MAPPER_OPTIONS = new TemporalAccessorNodeMapperOptions();
+    private static final LocalDateTimeNodeMapperOptions TEMPORAL_ACCESSOR_NODE_MAPPER_OPTIONS = new LocalDateTimeNodeMapperOptions();
 
     private final Class<? extends TemporalAccessor> type;
     private final TemporalQuery<LocalDateTime> temporalQuery;
@@ -45,7 +45,7 @@ public final class LocalDateTimeNodeMapper implements TypeNodeMapper<LocalDateTi
 
     @Override
     public ValueNode valueToNode(LocalDateTime value, ObjectToNodeContext context) throws ObjectToNodeException {
-        var options = context.getMapperOptions(TemporalAccessorNodeMapperOptions.class, TEMPORAL_ACCESSOR_NODE_MAPPER_OPTIONS);
+        var options = context.getMapperOptions(LocalDateTimeNodeMapperOptions.class, TEMPORAL_ACCESSOR_NODE_MAPPER_OPTIONS);
         // 处理时间戳格式
         if (options.useTimestamp()) {
             try {
@@ -65,7 +65,7 @@ public final class LocalDateTimeNodeMapper implements TypeNodeMapper<LocalDateTi
 
     @Override
     public LocalDateTime nodeToValue(ValueNode node, NodeToObjectContext context) throws NodeToObjectException {
-        var options = context.getMapperOptions(TemporalAccessorNodeMapperOptions.class, TEMPORAL_ACCESSOR_NODE_MAPPER_OPTIONS);
+        var options = context.getMapperOptions(LocalDateTimeNodeMapperOptions.class, TEMPORAL_ACCESSOR_NODE_MAPPER_OPTIONS);
         // 处理时间戳格式
         if (options.useTimestamp()) {
             try {

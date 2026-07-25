@@ -23,7 +23,7 @@ import static dev.scx.reflect.ScxReflect.typeOf;
 /// @author scx567888
 public final class YearNodeMapper implements TypeNodeMapper<Year, ValueNode> {
 
-    private static final TemporalAccessorNodeMapperOptions TEMPORAL_ACCESSOR_NODE_MAPPER_OPTIONS = new TemporalAccessorNodeMapperOptions();
+    private static final YearNodeMapperOptions TEMPORAL_ACCESSOR_NODE_MAPPER_OPTIONS = new YearNodeMapperOptions();
 
     private final Class<? extends TemporalAccessor> type;
     private final TemporalQuery<Year> temporalQuery;
@@ -45,7 +45,7 @@ public final class YearNodeMapper implements TypeNodeMapper<Year, ValueNode> {
 
     @Override
     public ValueNode valueToNode(Year value, ObjectToNodeContext context) throws ObjectToNodeException {
-        var options = context.getMapperOptions(TemporalAccessorNodeMapperOptions.class, TEMPORAL_ACCESSOR_NODE_MAPPER_OPTIONS);
+        var options = context.getMapperOptions(YearNodeMapperOptions.class, TEMPORAL_ACCESSOR_NODE_MAPPER_OPTIONS);
         // 处理时间戳格式
         if (options.useTimestamp()) {
             try {
@@ -65,7 +65,7 @@ public final class YearNodeMapper implements TypeNodeMapper<Year, ValueNode> {
 
     @Override
     public Year nodeToValue(ValueNode node, NodeToObjectContext context) throws NodeToObjectException {
-        var options = context.getMapperOptions(TemporalAccessorNodeMapperOptions.class, TEMPORAL_ACCESSOR_NODE_MAPPER_OPTIONS);
+        var options = context.getMapperOptions(YearNodeMapperOptions.class, TEMPORAL_ACCESSOR_NODE_MAPPER_OPTIONS);
         // 处理时间戳格式
         if (options.useTimestamp()) {
             try {
