@@ -383,76 +383,76 @@ import dev.scx.reflect.TypeInfo;
 /// 但通常不应该改变 mapper 的身份.
 ///
 ///
-/// ## 5. 为什么 TemporalAccessorNodeMapper 的 formatter 是 options, 而不是构造函数参数?
+/// ## 5. 为什么 LocalDateTimeNodeMapper 的 formatter 是 options, 而不是构造函数参数?
 ///
-/// TemporalAccessorNodeMapper 是这套设计哲学的典型例子.
+/// LocalDateTimeNodeMapper 是这套设计哲学的典型例子.
 ///
 /// 它当然可以被设计成:
 ///
 /// ```java
-/// new TemporalAccessorNodeMapper(formatter)
+/// new LocalDateTimeNodeMapper(formatter)
 /// ```
 ///
 /// 或者:
 ///
 /// ```java
-/// new TemporalAccessorNodeMapper(formatter, useTimestamp)
+/// new LocalDateTimeNodeMapper(formatter, useTimestamp)
 /// ```
 ///
 /// 这种设计并非错误.
 ///
 /// 但是本库没有这样设计.
 ///
-/// 原因是, 在本库的抽象中, TemporalAccessorNodeMapper 的身份是:
+/// 原因是, 在本库的抽象中, LocalDateTimeNodeMapper 的身份是:
 ///
-/// - 负责处理 TemporalAccessor 相关类型.
+/// - 负责处理 LocalDateTime 类型.
 ///
 /// 而不是:
 ///
-/// - 负责用 yyyy-MM-dd 格式处理 TemporalAccessor;
-/// - 负责用 yyyy-MM-dd HH:mm:ss 格式处理 TemporalAccessor;
-/// - 负责把某些 temporal 类型输出成 timestamp;
-/// - 负责把某些 temporal 类型输出成 ISO 字符串.
+/// - 负责用 yyyy-MM-dd 格式处理 LocalDateTime;
+/// - 负责用 yyyy-MM-dd HH:mm:ss 格式处理 LocalDateTime;
+/// - 负责把 LocalDateTime 类型输出成 timestamp;
+/// - 负责把 LocalDateTime 类型输出成 ISO 字符串.
 ///
 /// formatter、timestamp 模式、字符串格式等配置,
-/// 改变的是已选中的 TemporalAccessorNodeMapper 本次如何把值表示成 Node.
+/// 改变的是已选中的 LocalDateTimeNodeMapper 本次如何把值表示成 Node.
 ///
 /// 它们不改变:
 ///
 /// ```text
-/// LocalDateTime -> TemporalAccessorNodeMapper
-/// LocalDate -> TemporalAccessorNodeMapper
-/// Instant -> TemporalAccessorNodeMapper
+/// LocalDateTime -> LocalDateTimeNodeMapper
+/// LocalDate -> LocalDateNodeMapper
+/// Instant -> InstantNodeMapper
 /// ```
 ///
 /// 这类类型分派关系.
 ///
-/// 因此, 在本库中, 日期 / 时间格式化器属于 TemporalAccessorNodeMapperOptions,
-/// 而不是 TemporalAccessorNodeMapper 的构造函数参数.
+/// 因此, 在本库中, 日期 / 时间格式化器属于 LocalDateTimeNodeMapperOptions,
+/// 而不是 LocalDateTimeNodeMapper 的构造函数参数.
 ///
 /// 这样做的好处是:
 ///
 /// - 用户可以在某一次转换中临时改变日期格式;
 /// - 用户不需要为了换一个 formatter 重新 build converter;
-/// - 用户不需要注册多个只在日期格式上不同的 TemporalAccessorNodeMapper;
+/// - 用户不需要注册多个只在日期格式上不同的 LocalDateTimeNodeMapper;
 /// - mapper 的身份保持稳定;
 /// - converter 的能力边界不会因为普通运行策略而碎片化.
 ///
 /// 这里需要强调:
 ///
-/// 这并不是说"日期格式在所有设计中都必然属于 options".
+/// 这并不是说 "日期格式在所有设计中都必然属于 options".
 ///
 /// 日期格式当然也可以被设计成 mapper 构造函数参数.
 /// 只是那样一来, mapper 的身份就会从:
 ///
 /// ```text
-/// 处理 TemporalAccessor 类型
+/// 处理 LocalDateTime 类型
 /// ```
 ///
 /// 变成:
 ///
 /// ```text
-/// 以某种格式处理 TemporalAccessor 类型
+/// 以某种格式处理 LocalDateTime 类型
 /// ```
 ///
 /// 这会让 mapper 越来越像"提前绑定了一部分 options 的小 converter".
