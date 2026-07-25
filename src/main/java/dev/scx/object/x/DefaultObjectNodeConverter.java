@@ -104,7 +104,7 @@ import dev.scx.reflect.TypeInfo;
 /// 而是为了让本库在长期演化中不要滑向两个极端:
 ///
 /// - 所有东西都是参数, 最后参数对象膨胀成另一个 converter;
-/// - 所有东西都绑定到实例, 最后 converter 变成一个隐藏大量行为的 ObjectMapper 式对象.
+/// - 所有东西都绑定到实例, 最后 converter 变成一个隐藏大量行为的 重配置 式对象.
 ///
 ///
 /// ## 1. 为什么 selector 属于 DefaultObjectNodeConverter?
