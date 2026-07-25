@@ -12,7 +12,7 @@ import dev.scx.object.x.mapper.bean.BeanFieldWriteResult;
 import dev.scx.object.x.mapper.bean.BeanNodeMapperOptions;
 import dev.scx.object.x.mapper.primitive.PrimitiveNullPolicy;
 import dev.scx.object.x.mapper.time.DateNodeMapperOptions;
-import dev.scx.object.x.mapper.time.TemporalAccessorNodeMapperOptions;
+import dev.scx.object.x.mapper.time.OffsetDateTimeNodeMapperOptions;
 import dev.scx.reflect.TypeInfo;
 import dev.scx.reflect.TypeReference;
 import org.testng.Assert;
@@ -204,7 +204,7 @@ public class ObjectNodeConverterTest {
         for (int i = 0; i < 99999; i = i + 1) {
 
             var l = convertValue(now, Date.class, DefaultObjectNodeConvertConfig.of()
-                .putMapperOptions(new TemporalAccessorNodeMapperOptions().useTimestamp(true))
+                .putMapperOptions(new OffsetDateTimeNodeMapperOptions().useTimestamp(true))
                 .putMapperOptions(new DateNodeMapperOptions().useTimestamp(true)));
 
 //            var l2 = OBJECT_MAPPER.convertValue(now, Date.class);

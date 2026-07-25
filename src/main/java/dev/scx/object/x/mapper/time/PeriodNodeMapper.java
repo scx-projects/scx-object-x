@@ -8,29 +8,27 @@ import dev.scx.object.x.mapper.TypeNodeMapper;
 import dev.scx.reflect.TypeInfo;
 
 import java.time.DateTimeException;
-import java.time.temporal.TemporalAmount;
+import java.time.Period;
 import java.util.function.Function;
 
 import static dev.scx.reflect.ScxReflect.typeOf;
 
-/// TemporalAmountNodeMapper
+/// PeriodNodeMapper
 ///
 /// @author scx567888
-public final class TemporalAmountNodeMapper<T extends TemporalAmount> implements TypeNodeMapper<T, StringNode> {
+public final class PeriodNodeMapper implements TypeNodeMapper<Period, StringNode> {
 
-    private final Class<T> type;
-    private final Function<T, String> generator;
-    private final Function<String, T> parser;
+    private final Function<Period, String> generator;
+    private final Function<String, Period> parser;
 
-    public TemporalAmountNodeMapper(Class<T> type, Function<T, String> generator, Function<String, T> parser) {
-        this.type = type;
-        this.generator = generator;
-        this.parser = parser;
+    public PeriodNodeMapper() {
+        this.generator = Period::toString;
+        this.parser = Period::parse;
     }
 
     @Override
     public TypeInfo valueType() {
-        return typeOf(type);
+        return typeOf(Period.class);
     }
 
     @Override
@@ -39,12 +37,12 @@ public final class TemporalAmountNodeMapper<T extends TemporalAmount> implements
     }
 
     @Override
-    public StringNode valueToNode(T value, ObjectToNodeContext context) {
+    public StringNode valueToNode(Period value, ObjectToNodeContext context) {
         return new StringNode(generator.apply(value));
     }
 
     @Override
-    public T nodeToValue(StringNode node, NodeToObjectContext context) throws NodeToObjectException {
+    public Period nodeToValue(StringNode node, NodeToObjectContext context) throws NodeToObjectException {
         try {
             return parser.apply(node.asString());
         } catch (DateTimeException e) {

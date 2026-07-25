@@ -18,11 +18,7 @@ import dev.scx.object.x.mapper.other.UUIDNodeMapper;
 import dev.scx.object.x.mapper.path.PathNodeMapperFactory;
 import dev.scx.object.x.mapper.primitive.*;
 import dev.scx.object.x.mapper.record.RecordNodeMapperFactory;
-import dev.scx.object.x.mapper.time.DateNodeMapper;
-import dev.scx.object.x.mapper.time.TemporalAccessorNodeMapper;
-import dev.scx.object.x.mapper.time.TemporalAmountNodeMapper;
-
-import java.time.*;
+import dev.scx.object.x.mapper.time.*;
 
 /// DefaultObjectNodeConverterBuilder
 ///
@@ -87,20 +83,20 @@ public final class DefaultObjectNodeConverterBuilder {
 
 
         // 时间
-        this.registerMapper(new TemporalAccessorNodeMapper<>(LocalDateTime.class, LocalDateTime::from));
-        this.registerMapper(new TemporalAccessorNodeMapper<>(LocalDate.class, LocalDate::from));
-        this.registerMapper(new TemporalAccessorNodeMapper<>(LocalTime.class, LocalTime::from));
-        this.registerMapper(new TemporalAccessorNodeMapper<>(OffsetDateTime.class, OffsetDateTime::from));
-        this.registerMapper(new TemporalAccessorNodeMapper<>(OffsetTime.class, OffsetTime::from));
-        this.registerMapper(new TemporalAccessorNodeMapper<>(ZonedDateTime.class, ZonedDateTime::from));
-        this.registerMapper(new TemporalAccessorNodeMapper<>(Year.class, Year::from));
-        this.registerMapper(new TemporalAccessorNodeMapper<>(Month.class, Month::from));
-        this.registerMapper(new TemporalAccessorNodeMapper<>(MonthDay.class, MonthDay::from));
-        this.registerMapper(new TemporalAccessorNodeMapper<>(YearMonth.class, YearMonth::from));
-        this.registerMapper(new TemporalAccessorNodeMapper<>(DayOfWeek.class, DayOfWeek::from));
-        this.registerMapper(new TemporalAccessorNodeMapper<>(Instant.class, Instant::from));
-        this.registerMapper(new TemporalAmountNodeMapper<>(Duration.class, Duration::toString, Duration::parse));
-        this.registerMapper(new TemporalAmountNodeMapper<>(Period.class, Period::toString, Period::parse));
+        this.registerMapper(new LocalDateTimeNodeMapper());
+        this.registerMapper(new LocalDateNodeMapper());
+        this.registerMapper(new LocalTimeNodeMapper());
+        this.registerMapper(new OffsetDateTimeNodeMapper());
+        this.registerMapper(new OffsetTimeNodeMapper());
+        this.registerMapper(new ZonedDateTimeNodeMapper());
+        this.registerMapper(new YearNodeMapper());
+        this.registerMapper(new MonthNodeMapper());
+        this.registerMapper(new MonthDayNodeMapper());
+        this.registerMapper(new YearMonthNodeMapper());
+        this.registerMapper(new DayOfWeekNodeMapper());
+        this.registerMapper(new InstantNodeMapper());
+        this.registerMapper(new DurationNodeMapper());
+        this.registerMapper(new PeriodNodeMapper());
         this.registerMapper(new DateNodeMapper());
 
 

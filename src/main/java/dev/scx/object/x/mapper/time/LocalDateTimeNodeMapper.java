@@ -12,29 +12,27 @@ import dev.scx.reflect.TypeInfo;
 
 import java.time.DateTimeException;
 import java.time.Instant;
-import java.time.temporal.TemporalAccessor;
+import java.time.LocalDateTime;
 import java.time.temporal.TemporalQuery;
 
 import static dev.scx.reflect.ScxReflect.typeOf;
 
-/// TemporalAccessorNodeMapper
+/// LocalDateTimeNodeMapper
 ///
 /// @author scx567888
-public final class TemporalAccessorNodeMapper<T extends TemporalAccessor> implements TypeNodeMapper<T, ValueNode> {
+public final class LocalDateTimeNodeMapper implements TypeNodeMapper<LocalDateTime, ValueNode> {
 
-    private static final TemporalAccessorNodeMapperOptions TEMPORAL_ACCESSOR_NODE_MAPPER_OPTIONS = new TemporalAccessorNodeMapperOptions();
+    private static final LocalDateTimeNodeMapperOptions DEFAULT_OPTIONS = new LocalDateTimeNodeMapperOptions();
 
-    private final Class<? extends TemporalAccessor> type;
-    private final TemporalQuery<T> temporalQuery;
+    private final TemporalQuery<LocalDateTime> temporalQuery;
 
-    public TemporalAccessorNodeMapper(Class<? extends TemporalAccessor> type, TemporalQuery<T> temporalQuery) {
-        this.type = type;
-        this.temporalQuery = temporalQuery;
+    public LocalDateTimeNodeMapper() {
+        this.temporalQuery = LocalDateTime::from;
     }
 
     @Override
     public TypeInfo valueType() {
-        return typeOf(type);
+        return typeOf(LocalDateTime.class);
     }
 
     @Override
@@ -43,8 +41,8 @@ public final class TemporalAccessorNodeMapper<T extends TemporalAccessor> implem
     }
 
     @Override
-    public ValueNode valueToNode(T value, ObjectToNodeContext context) throws ObjectToNodeException {
-        var options = context.getMapperOptions(TemporalAccessorNodeMapperOptions.class, TEMPORAL_ACCESSOR_NODE_MAPPER_OPTIONS);
+    public ValueNode valueToNode(LocalDateTime value, ObjectToNodeContext context) throws ObjectToNodeException {
+        var options = context.getMapperOptions(LocalDateTimeNodeMapperOptions.class, DEFAULT_OPTIONS);
         // 处理时间戳格式
         if (options.useTimestamp()) {
             try {
@@ -53,7 +51,7 @@ public final class TemporalAccessorNodeMapper<T extends TemporalAccessor> implem
                 throw new ObjectToNodeException(e);
             }
         } else { // 处理字符串格式
-            var formatter = options.getFormatter(type);
+            var formatter = options.formatter();
             try {
                 return new StringNode(formatter.format(value));
             } catch (DateTimeException e) {
@@ -63,8 +61,8 @@ public final class TemporalAccessorNodeMapper<T extends TemporalAccessor> implem
     }
 
     @Override
-    public T nodeToValue(ValueNode node, NodeToObjectContext context) throws NodeToObjectException {
-        var options = context.getMapperOptions(TemporalAccessorNodeMapperOptions.class, TEMPORAL_ACCESSOR_NODE_MAPPER_OPTIONS);
+    public LocalDateTime nodeToValue(ValueNode node, NodeToObjectContext context) throws NodeToObjectException {
+        var options = context.getMapperOptions(LocalDateTimeNodeMapperOptions.class, DEFAULT_OPTIONS);
         // 处理时间戳格式
         if (options.useTimestamp()) {
             try {
@@ -74,7 +72,7 @@ public final class TemporalAccessorNodeMapper<T extends TemporalAccessor> implem
                 throw new NodeToObjectException(e);
             }
         } else {// 处理字符串格式
-            var formatter = options.getFormatter(type);
+            var formatter = options.formatter();
             try {
                 return formatter.parse(node.asString(), temporalQuery);
             } catch (DateTimeException e) {
