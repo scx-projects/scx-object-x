@@ -28,7 +28,7 @@ public final class ZonedDateTimeNodeMapper implements TypeNodeMapper<ZonedDateTi
     private final Class<? extends TemporalAccessor> type;
     private final TemporalQuery<ZonedDateTime> temporalQuery;
 
-    public ZonedDateTimeNodeMapper( ) {
+    public ZonedDateTimeNodeMapper() {
         this.type = ZonedDateTime.class;
         this.temporalQuery = ZonedDateTime::from;
     }

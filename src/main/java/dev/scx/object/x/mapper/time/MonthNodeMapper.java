@@ -28,7 +28,7 @@ public final class MonthNodeMapper implements TypeNodeMapper<Month, ValueNode> {
     private final Class<? extends TemporalAccessor> type;
     private final TemporalQuery<Month> temporalQuery;
 
-    public MonthNodeMapper( ) {
+    public MonthNodeMapper() {
         this.type = Month.class;
         this.temporalQuery = Month::from;
     }

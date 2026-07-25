@@ -27,7 +27,7 @@ public final class InstantNodeMapper implements TypeNodeMapper<Instant, ValueNod
     private final Class<? extends TemporalAccessor> type;
     private final TemporalQuery<Instant> temporalQuery;
 
-    public InstantNodeMapper( ) {
+    public InstantNodeMapper() {
         this.type = Instant.class;
         this.temporalQuery = Instant::from;
     }

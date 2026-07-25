@@ -28,7 +28,7 @@ public final class DayOfWeekNodeMapper implements TypeNodeMapper<DayOfWeek, Valu
     private final Class<? extends TemporalAccessor> type;
     private final TemporalQuery<DayOfWeek> temporalQuery;
 
-    public DayOfWeekNodeMapper( ) {
+    public DayOfWeekNodeMapper() {
         this.type = DayOfWeek.class;
         this.temporalQuery = DayOfWeek::from;
     }

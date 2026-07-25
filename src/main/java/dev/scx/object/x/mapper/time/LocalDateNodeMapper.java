@@ -28,7 +28,7 @@ public final class LocalDateNodeMapper implements TypeNodeMapper<LocalDate, Valu
     private final Class<? extends TemporalAccessor> type;
     private final TemporalQuery<LocalDate> temporalQuery;
 
-    public LocalDateNodeMapper( ) {
+    public LocalDateNodeMapper() {
         this.type = LocalDate.class;
         this.temporalQuery = LocalDate::from;
     }

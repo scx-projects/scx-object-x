@@ -28,9 +28,9 @@ public final class OffsetDateTimeNodeMapper implements TypeNodeMapper<OffsetDate
     private final Class<? extends TemporalAccessor> type;
     private final TemporalQuery<OffsetDateTime> temporalQuery;
 
-    public OffsetDateTimeNodeMapper( ) {
+    public OffsetDateTimeNodeMapper() {
         this.type = OffsetDateTime.class;
-        this.temporalQuery =  OffsetDateTime::from;
+        this.temporalQuery = OffsetDateTime::from;
     }
 
     @Override
