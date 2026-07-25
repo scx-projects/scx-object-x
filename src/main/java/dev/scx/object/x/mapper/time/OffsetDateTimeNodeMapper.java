@@ -12,6 +12,7 @@ import dev.scx.reflect.TypeInfo;
 
 import java.time.DateTimeException;
 import java.time.Instant;
+import java.time.OffsetDateTime;
 import java.time.temporal.TemporalAccessor;
 import java.time.temporal.TemporalQuery;
 
@@ -27,8 +28,8 @@ public final class OffsetDateTimeNodeMapper<T extends TemporalAccessor> implemen
     private final Class<? extends TemporalAccessor> type;
     private final TemporalQuery<T> temporalQuery;
 
-    public OffsetDateTimeNodeMapper(Class<? extends TemporalAccessor> type, TemporalQuery<T> temporalQuery) {
-        this.type = type;
+    public OffsetDateTimeNodeMapper( TemporalQuery<T> temporalQuery) {
+        this.type = OffsetDateTime.class;
         this.temporalQuery = temporalQuery;
     }
 

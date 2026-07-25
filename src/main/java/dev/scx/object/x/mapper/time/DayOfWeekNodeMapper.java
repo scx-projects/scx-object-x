@@ -11,6 +11,7 @@ import dev.scx.object.x.mapper.TypeNodeMapper;
 import dev.scx.reflect.TypeInfo;
 
 import java.time.DateTimeException;
+import java.time.DayOfWeek;
 import java.time.Instant;
 import java.time.temporal.TemporalAccessor;
 import java.time.temporal.TemporalQuery;
@@ -27,8 +28,8 @@ public final class DayOfWeekNodeMapper<T extends TemporalAccessor> implements Ty
     private final Class<? extends TemporalAccessor> type;
     private final TemporalQuery<T> temporalQuery;
 
-    public DayOfWeekNodeMapper(Class<? extends TemporalAccessor> type, TemporalQuery<T> temporalQuery) {
-        this.type = type;
+    public DayOfWeekNodeMapper( TemporalQuery<T> temporalQuery) {
+        this.type = DayOfWeek.class;
         this.temporalQuery = temporalQuery;
     }
 

@@ -12,6 +12,7 @@ import dev.scx.reflect.TypeInfo;
 
 import java.time.DateTimeException;
 import java.time.Instant;
+import java.time.ZonedDateTime;
 import java.time.temporal.TemporalAccessor;
 import java.time.temporal.TemporalQuery;
 
@@ -27,8 +28,8 @@ public final class ZonedDateTimeNodeMapper<T extends TemporalAccessor> implement
     private final Class<? extends TemporalAccessor> type;
     private final TemporalQuery<T> temporalQuery;
 
-    public ZonedDateTimeNodeMapper(Class<? extends TemporalAccessor> type, TemporalQuery<T> temporalQuery) {
-        this.type = type;
+    public ZonedDateTimeNodeMapper( TemporalQuery<T> temporalQuery) {
+        this.type = ZonedDateTime.class;
         this.temporalQuery = temporalQuery;
     }
 

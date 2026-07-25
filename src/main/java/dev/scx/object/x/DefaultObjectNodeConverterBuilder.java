@@ -85,18 +85,18 @@ public final class DefaultObjectNodeConverterBuilder {
 
 
         // 时间
-        this.registerMapper(new LocalDateTimeNodeMapper<>(LocalDateTime.class, LocalDateTime::from));
-        this.registerMapper(new LocalDateNodeMapper<>(LocalDate.class, LocalDate::from));
-        this.registerMapper(new LocalTimeNodeMapper<>(LocalTime.class, LocalTime::from));
-        this.registerMapper(new OffsetDateTimeNodeMapper<>(OffsetDateTime.class, OffsetDateTime::from));
-        this.registerMapper(new OffsetTimeNodeMapper<>(OffsetTime.class, OffsetTime::from));
-        this.registerMapper(new ZonedDateTimeNodeMapper<>(ZonedDateTime.class, ZonedDateTime::from));
-        this.registerMapper(new YearNodeMapper<>(Year.class, Year::from));
-        this.registerMapper(new MonthNodeMapper<>(Month.class, Month::from));
-        this.registerMapper(new MonthDayNodeMapper<>(MonthDay.class, MonthDay::from));
-        this.registerMapper(new YearMonthNodeMapper<>(YearMonth.class, YearMonth::from));
-        this.registerMapper(new DayOfWeekNodeMapper<>(DayOfWeek.class, DayOfWeek::from));
-        this.registerMapper(new InstantNodeMapper<>(Instant.class, Instant::from));
+        this.registerMapper(new LocalDateTimeNodeMapper<>(LocalDateTime::from));
+        this.registerMapper(new LocalDateNodeMapper<>( LocalDate::from));
+        this.registerMapper(new LocalTimeNodeMapper<>( LocalTime::from));
+        this.registerMapper(new OffsetDateTimeNodeMapper<>( OffsetDateTime::from));
+        this.registerMapper(new OffsetTimeNodeMapper<>( OffsetTime::from));
+        this.registerMapper(new ZonedDateTimeNodeMapper<>( ZonedDateTime::from));
+        this.registerMapper(new YearNodeMapper<>( Year::from));
+        this.registerMapper(new MonthNodeMapper<>( Month::from));
+        this.registerMapper(new MonthDayNodeMapper<>( MonthDay::from));
+        this.registerMapper(new YearMonthNodeMapper<>( YearMonth::from));
+        this.registerMapper(new DayOfWeekNodeMapper<>( DayOfWeek::from));
+        this.registerMapper(new InstantNodeMapper<>( Instant::from));
         this.registerMapper(new TemporalAmountNodeMapper<>(Duration.class, Duration::toString, Duration::parse));
         this.registerMapper(new TemporalAmountNodeMapper<>(Period.class, Period::toString, Period::parse));
         this.registerMapper(new DateNodeMapper());

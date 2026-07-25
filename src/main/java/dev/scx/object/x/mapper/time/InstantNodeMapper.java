@@ -27,8 +27,8 @@ public final class InstantNodeMapper<T extends TemporalAccessor> implements Type
     private final Class<? extends TemporalAccessor> type;
     private final TemporalQuery<T> temporalQuery;
 
-    public InstantNodeMapper(Class<? extends TemporalAccessor> type, TemporalQuery<T> temporalQuery) {
-        this.type = type;
+    public InstantNodeMapper( TemporalQuery<T> temporalQuery) {
+        this.type = Instant.class;
         this.temporalQuery = temporalQuery;
     }
 

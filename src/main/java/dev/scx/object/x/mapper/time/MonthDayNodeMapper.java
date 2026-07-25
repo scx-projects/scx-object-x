@@ -12,6 +12,7 @@ import dev.scx.reflect.TypeInfo;
 
 import java.time.DateTimeException;
 import java.time.Instant;
+import java.time.MonthDay;
 import java.time.temporal.TemporalAccessor;
 import java.time.temporal.TemporalQuery;
 
@@ -27,8 +28,8 @@ public final class MonthDayNodeMapper<T extends TemporalAccessor> implements Typ
     private final Class<? extends TemporalAccessor> type;
     private final TemporalQuery<T> temporalQuery;
 
-    public MonthDayNodeMapper(Class<? extends TemporalAccessor> type, TemporalQuery<T> temporalQuery) {
-        this.type = type;
+    public MonthDayNodeMapper(TemporalQuery<T> temporalQuery) {
+        this.type = MonthDay.class;
         this.temporalQuery = temporalQuery;
     }
 
