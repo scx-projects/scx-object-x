@@ -18,12 +18,8 @@ import static dev.scx.reflect.ScxReflect.typeOf;
 /// @author scx567888
 public final class PeriodNodeMapper implements TypeNodeMapper<Period, StringNode> {
 
-    private final Function<Period, String> generator;
-    private final Function<String, Period> parser;
-
     public PeriodNodeMapper() {
-        this.generator = Period::toString;
-        this.parser = Period::parse;
+
     }
 
     @Override
@@ -38,13 +34,13 @@ public final class PeriodNodeMapper implements TypeNodeMapper<Period, StringNode
 
     @Override
     public StringNode valueToNode(Period value, ObjectToNodeContext context) {
-        return new StringNode(generator.apply(value));
+        return new StringNode(value.toString());
     }
 
     @Override
     public Period nodeToValue(StringNode node, NodeToObjectContext context) throws NodeToObjectException {
         try {
-            return parser.apply(node.asString());
+            return Period.parse(node.asString());
         } catch (DateTimeException e) {
             throw new NodeToObjectException(e);
         }
