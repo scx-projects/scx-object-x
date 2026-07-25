@@ -9,6 +9,7 @@ import dev.scx.reflect.TypeInfo;
 
 import java.time.DateTimeException;
 import java.time.Period;
+import java.util.function.Function;
 
 import static dev.scx.reflect.ScxReflect.typeOf;
 
@@ -17,8 +18,12 @@ import static dev.scx.reflect.ScxReflect.typeOf;
 /// @author scx567888
 public final class PeriodNodeMapper implements TypeNodeMapper<Period, StringNode> {
 
-    public PeriodNodeMapper() {
+    private final Function<Period, String> generator;
+    private final Function<String, Period> parser;
 
+    public PeriodNodeMapper() {
+        this.generator = Period::toString;
+        this.parser = Period::parse;
     }
 
     @Override
@@ -33,13 +38,13 @@ public final class PeriodNodeMapper implements TypeNodeMapper<Period, StringNode
 
     @Override
     public StringNode valueToNode(Period value, ObjectToNodeContext context) {
-        return new StringNode(value.toString());
+        return new StringNode(generator.apply(value));
     }
 
     @Override
     public Period nodeToValue(StringNode node, NodeToObjectContext context) throws NodeToObjectException {
         try {
-            return Period.parse(node.asString());
+            return parser.apply(node.asString());
         } catch (DateTimeException e) {
             throw new NodeToObjectException(e);
         }

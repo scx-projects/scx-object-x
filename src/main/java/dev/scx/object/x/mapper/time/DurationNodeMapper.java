@@ -9,6 +9,7 @@ import dev.scx.reflect.TypeInfo;
 
 import java.time.DateTimeException;
 import java.time.Duration;
+import java.util.function.Function;
 
 import static dev.scx.reflect.ScxReflect.typeOf;
 
@@ -17,8 +18,12 @@ import static dev.scx.reflect.ScxReflect.typeOf;
 /// @author scx567888
 public final class DurationNodeMapper implements TypeNodeMapper<Duration, StringNode> {
 
-    public DurationNodeMapper() {
+    private final Function<Duration, String> generator;
+    private final Function<String, Duration> parser;
 
+    public DurationNodeMapper() {
+        this.generator = Duration::toString;
+        this.parser = Duration::parse;
     }
 
     @Override
@@ -33,13 +38,13 @@ public final class DurationNodeMapper implements TypeNodeMapper<Duration, String
 
     @Override
     public StringNode valueToNode(Duration value, ObjectToNodeContext context) {
-        return new StringNode(value.toString());
+        return new StringNode(generator.apply(value));
     }
 
     @Override
     public Duration nodeToValue(StringNode node, NodeToObjectContext context) throws NodeToObjectException {
         try {
-            return Duration.parse(node.asString());
+            return parser.apply(node.asString());
         } catch (DateTimeException e) {
             throw new NodeToObjectException(e);
         }
