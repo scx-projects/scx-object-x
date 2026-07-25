@@ -18,19 +18,17 @@ import static dev.scx.reflect.ScxReflect.typeOf;
 /// @author scx567888
 public final class PeriodNodeMapper implements TypeNodeMapper<Period, StringNode> {
 
-    private final Class<Period> type;
     private final Function<Period, String> generator;
     private final Function<String, Period> parser;
 
     public PeriodNodeMapper() {
-        this.type = Period.class;
         this.generator = Period::toString;
         this.parser = Period::parse;
     }
 
     @Override
     public TypeInfo valueType() {
-        return typeOf(type);
+        return typeOf(Period.class);
     }
 
     @Override

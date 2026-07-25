@@ -18,19 +18,13 @@ import static dev.scx.reflect.ScxReflect.typeOf;
 /// @author scx567888
 public final class DurationNodeMapper implements TypeNodeMapper<Duration, StringNode> {
 
-    private final Class<Duration> type;
-    private final Function<Duration, String> generator;
-    private final Function<String, Duration> parser;
-
     public DurationNodeMapper() {
-        this.type = Duration.class;
-        this.generator = Duration::toString;
-        this.parser = Duration::parse;
+
     }
 
     @Override
     public TypeInfo valueType() {
-        return typeOf(type);
+        return typeOf(Duration.class);
     }
 
     @Override
@@ -40,13 +34,13 @@ public final class DurationNodeMapper implements TypeNodeMapper<Duration, String
 
     @Override
     public StringNode valueToNode(Duration value, ObjectToNodeContext context) {
-        return new StringNode(generator.apply(value));
+        return new StringNode(value.toString());
     }
 
     @Override
     public Duration nodeToValue(StringNode node, NodeToObjectContext context) throws NodeToObjectException {
         try {
-            return parser.apply(node.asString());
+            return Duration.parse(node.asString());
         } catch (DateTimeException e) {
             throw new NodeToObjectException(e);
         }
