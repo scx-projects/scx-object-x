@@ -54,7 +54,7 @@ public final class LocalDateTimeNodeMapper implements TypeNodeMapper<LocalDateTi
                 throw new ObjectToNodeException(e);
             }
         } else { // 处理字符串格式
-            var formatter = options.getFormatter(type);
+            var formatter = options.formatter();
             try {
                 return new StringNode(formatter.format(value));
             } catch (DateTimeException e) {
@@ -75,7 +75,7 @@ public final class LocalDateTimeNodeMapper implements TypeNodeMapper<LocalDateTi
                 throw new NodeToObjectException(e);
             }
         } else {// 处理字符串格式
-            var formatter = options.getFormatter(type);
+            var formatter = options.formatter();
             try {
                 return formatter.parse(node.asString(), temporalQuery);
             } catch (DateTimeException e) {
