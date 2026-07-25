@@ -70,8 +70,8 @@ import dev.scx.reflect.TypeInfo;
 ///
 /// - 把 selector 作为方法参数传入, 并不是错误的;
 /// - 把 options 绑定到 converter 实例上, 也不是错误的;
-/// - 把日期 formatter 放进 TemporalAccessorNodeMapper 的构造函数, 也不是错误的;
-/// - 把日期 formatter 放进 TemporalAccessorNodeMapperOptions, 同样也不是某种唯一真理.
+/// - 把日期 formatter 放进 LocalDateTimeNodeMapper 的构造函数, 也不是错误的;
+/// - 把日期 formatter 放进 LocalDateTimeNodeMapperOptions, 同样也不是某种唯一真理.
 ///
 /// 这些设计都可以成立.
 ///
