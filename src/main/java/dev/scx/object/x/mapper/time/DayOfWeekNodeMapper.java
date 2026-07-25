@@ -13,7 +13,6 @@ import dev.scx.reflect.TypeInfo;
 import java.time.DateTimeException;
 import java.time.DayOfWeek;
 import java.time.Instant;
-import java.time.temporal.TemporalAccessor;
 import java.time.temporal.TemporalQuery;
 
 import static dev.scx.reflect.ScxReflect.typeOf;
@@ -25,17 +24,15 @@ public final class DayOfWeekNodeMapper implements TypeNodeMapper<DayOfWeek, Valu
 
     private static final DayOfWeekNodeMapperOptions DEFAULT_OPTIONS = new DayOfWeekNodeMapperOptions();
 
-    private final Class<? extends TemporalAccessor> type;
     private final TemporalQuery<DayOfWeek> temporalQuery;
 
     public DayOfWeekNodeMapper() {
-        this.type = DayOfWeek.class;
         this.temporalQuery = DayOfWeek::from;
     }
 
     @Override
     public TypeInfo valueType() {
-        return typeOf(type);
+        return typeOf(DayOfWeek.class);
     }
 
     @Override

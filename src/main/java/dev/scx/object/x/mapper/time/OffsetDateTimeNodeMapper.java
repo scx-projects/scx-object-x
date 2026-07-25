@@ -13,7 +13,6 @@ import dev.scx.reflect.TypeInfo;
 import java.time.DateTimeException;
 import java.time.Instant;
 import java.time.OffsetDateTime;
-import java.time.temporal.TemporalAccessor;
 import java.time.temporal.TemporalQuery;
 
 import static dev.scx.reflect.ScxReflect.typeOf;
@@ -25,17 +24,15 @@ public final class OffsetDateTimeNodeMapper implements TypeNodeMapper<OffsetDate
 
     private static final OffsetDateTimeNodeMapperOptions DEFAULT_OPTIONS = new OffsetDateTimeNodeMapperOptions();
 
-    private final Class<? extends TemporalAccessor> type;
     private final TemporalQuery<OffsetDateTime> temporalQuery;
 
     public OffsetDateTimeNodeMapper() {
-        this.type = OffsetDateTime.class;
         this.temporalQuery = OffsetDateTime::from;
     }
 
     @Override
     public TypeInfo valueType() {
-        return typeOf(type);
+        return typeOf(OffsetDateTime.class);
     }
 
     @Override

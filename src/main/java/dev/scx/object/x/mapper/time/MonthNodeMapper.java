@@ -13,7 +13,6 @@ import dev.scx.reflect.TypeInfo;
 import java.time.DateTimeException;
 import java.time.Instant;
 import java.time.Month;
-import java.time.temporal.TemporalAccessor;
 import java.time.temporal.TemporalQuery;
 
 import static dev.scx.reflect.ScxReflect.typeOf;
@@ -25,17 +24,15 @@ public final class MonthNodeMapper implements TypeNodeMapper<Month, ValueNode> {
 
     private static final MonthNodeMapperOptions DEFAULT_OPTIONS = new MonthNodeMapperOptions();
 
-    private final Class<? extends TemporalAccessor> type;
     private final TemporalQuery<Month> temporalQuery;
 
     public MonthNodeMapper() {
-        this.type = Month.class;
         this.temporalQuery = Month::from;
     }
 
     @Override
     public TypeInfo valueType() {
-        return typeOf(type);
+        return typeOf(Month.class);
     }
 
     @Override

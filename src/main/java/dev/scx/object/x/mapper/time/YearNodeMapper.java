@@ -13,7 +13,6 @@ import dev.scx.reflect.TypeInfo;
 import java.time.DateTimeException;
 import java.time.Instant;
 import java.time.Year;
-import java.time.temporal.TemporalAccessor;
 import java.time.temporal.TemporalQuery;
 
 import static dev.scx.reflect.ScxReflect.typeOf;
@@ -25,17 +24,15 @@ public final class YearNodeMapper implements TypeNodeMapper<Year, ValueNode> {
 
     private static final YearNodeMapperOptions DEFAULT_OPTIONS = new YearNodeMapperOptions();
 
-    private final Class<? extends TemporalAccessor> type;
     private final TemporalQuery<Year> temporalQuery;
 
     public YearNodeMapper() {
-        this.type = Year.class;
         this.temporalQuery = Year::from;
     }
 
     @Override
     public TypeInfo valueType() {
-        return typeOf(type);
+        return typeOf(Year.class);
     }
 
     @Override

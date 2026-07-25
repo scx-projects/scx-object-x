@@ -13,7 +13,6 @@ import dev.scx.reflect.TypeInfo;
 import java.time.DateTimeException;
 import java.time.Instant;
 import java.time.LocalTime;
-import java.time.temporal.TemporalAccessor;
 import java.time.temporal.TemporalQuery;
 
 import static dev.scx.reflect.ScxReflect.typeOf;
@@ -25,17 +24,15 @@ public final class LocalTimeNodeMapper implements TypeNodeMapper<LocalTime, Valu
 
     private static final LocalTimeNodeMapperOptions DEFAULT_OPTIONS = new LocalTimeNodeMapperOptions();
 
-    private final Class<? extends TemporalAccessor> type;
     private final TemporalQuery<LocalTime> temporalQuery;
 
     public LocalTimeNodeMapper() {
-        this.type = LocalTime.class;
         this.temporalQuery = LocalTime::from;
     }
 
     @Override
     public TypeInfo valueType() {
-        return typeOf(type);
+        return typeOf(LocalTime.class);
     }
 
     @Override
