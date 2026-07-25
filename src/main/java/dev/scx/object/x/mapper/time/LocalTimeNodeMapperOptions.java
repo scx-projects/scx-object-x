@@ -21,7 +21,7 @@ public final class LocalTimeNodeMapperOptions implements TypeNodeMapperOptions {
         this.useTimestamp = false;
     }
 
-    public LocalTimeNodeMapperOptions formatter(Class<? extends TemporalAccessor> type, DateTimeFormatter formatter) {
+    public LocalTimeNodeMapperOptions formatter(DateTimeFormatter formatter) {
         if (formatter == null) {
             throw new NullPointerException("formatter cannot be null");
         }
