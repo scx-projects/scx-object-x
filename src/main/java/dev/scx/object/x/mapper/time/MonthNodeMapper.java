@@ -21,16 +21,16 @@ import static dev.scx.reflect.ScxReflect.typeOf;
 /// MonthNodeMapper
 ///
 /// @author scx567888
-public final class MonthNodeMapper<T extends TemporalAccessor> implements TypeNodeMapper<T, ValueNode> {
+public final class MonthNodeMapper<T extends TemporalAccessor> implements TypeNodeMapper<Month, ValueNode> {
 
     private static final TemporalAccessorNodeMapperOptions TEMPORAL_ACCESSOR_NODE_MAPPER_OPTIONS = new TemporalAccessorNodeMapperOptions();
 
     private final Class<? extends TemporalAccessor> type;
-    private final TemporalQuery<T> temporalQuery;
+    private final TemporalQuery<Month> temporalQuery;
 
-    public MonthNodeMapper( TemporalQuery<T> temporalQuery) {
+    public MonthNodeMapper( ) {
         this.type = Month.class;
-        this.temporalQuery = temporalQuery;
+        this.temporalQuery = Month::from;
     }
 
     @Override
@@ -44,7 +44,7 @@ public final class MonthNodeMapper<T extends TemporalAccessor> implements TypeNo
     }
 
     @Override
-    public ValueNode valueToNode(T value, ObjectToNodeContext context) throws ObjectToNodeException {
+    public ValueNode valueToNode(Month value, ObjectToNodeContext context) throws ObjectToNodeException {
         var options = context.getMapperOptions(TemporalAccessorNodeMapperOptions.class, TEMPORAL_ACCESSOR_NODE_MAPPER_OPTIONS);
         // 处理时间戳格式
         if (options.useTimestamp()) {
@@ -64,7 +64,7 @@ public final class MonthNodeMapper<T extends TemporalAccessor> implements TypeNo
     }
 
     @Override
-    public T nodeToValue(ValueNode node, NodeToObjectContext context) throws NodeToObjectException {
+    public Month nodeToValue(ValueNode node, NodeToObjectContext context) throws NodeToObjectException {
         var options = context.getMapperOptions(TemporalAccessorNodeMapperOptions.class, TEMPORAL_ACCESSOR_NODE_MAPPER_OPTIONS);
         // 处理时间戳格式
         if (options.useTimestamp()) {

@@ -21,16 +21,16 @@ import static dev.scx.reflect.ScxReflect.typeOf;
 /// LocalTimeNodeMapper
 ///
 /// @author scx567888
-public final class LocalTimeNodeMapper<T extends TemporalAccessor> implements TypeNodeMapper<T, ValueNode> {
+public final class LocalTimeNodeMapper<T extends TemporalAccessor> implements TypeNodeMapper<LocalTime, ValueNode> {
 
     private static final TemporalAccessorNodeMapperOptions TEMPORAL_ACCESSOR_NODE_MAPPER_OPTIONS = new TemporalAccessorNodeMapperOptions();
 
     private final Class<? extends TemporalAccessor> type;
-    private final TemporalQuery<T> temporalQuery;
+    private final TemporalQuery<LocalTime> temporalQuery;
 
-    public LocalTimeNodeMapper( TemporalQuery<T> temporalQuery) {
+    public LocalTimeNodeMapper( ) {
         this.type = LocalTime.class;
-        this.temporalQuery = temporalQuery;
+        this.temporalQuery = LocalTime::from;
     }
 
     @Override
@@ -44,7 +44,7 @@ public final class LocalTimeNodeMapper<T extends TemporalAccessor> implements Ty
     }
 
     @Override
-    public ValueNode valueToNode(T value, ObjectToNodeContext context) throws ObjectToNodeException {
+    public ValueNode valueToNode(LocalTime value, ObjectToNodeContext context) throws ObjectToNodeException {
         var options = context.getMapperOptions(TemporalAccessorNodeMapperOptions.class, TEMPORAL_ACCESSOR_NODE_MAPPER_OPTIONS);
         // 处理时间戳格式
         if (options.useTimestamp()) {
@@ -64,7 +64,7 @@ public final class LocalTimeNodeMapper<T extends TemporalAccessor> implements Ty
     }
 
     @Override
-    public T nodeToValue(ValueNode node, NodeToObjectContext context) throws NodeToObjectException {
+    public LocalTime nodeToValue(ValueNode node, NodeToObjectContext context) throws NodeToObjectException {
         var options = context.getMapperOptions(TemporalAccessorNodeMapperOptions.class, TEMPORAL_ACCESSOR_NODE_MAPPER_OPTIONS);
         // 处理时间戳格式
         if (options.useTimestamp()) {

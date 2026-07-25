@@ -21,16 +21,16 @@ import static dev.scx.reflect.ScxReflect.typeOf;
 /// OffsetTimeNodeMapper
 ///
 /// @author scx567888
-public final class OffsetTimeNodeMapper<T extends TemporalAccessor> implements TypeNodeMapper<T, ValueNode> {
+public final class OffsetTimeNodeMapper<T extends TemporalAccessor> implements TypeNodeMapper<OffsetTime, ValueNode> {
 
     private static final TemporalAccessorNodeMapperOptions TEMPORAL_ACCESSOR_NODE_MAPPER_OPTIONS = new TemporalAccessorNodeMapperOptions();
 
     private final Class<? extends TemporalAccessor> type;
-    private final TemporalQuery<T> temporalQuery;
+    private final TemporalQuery<OffsetTime> temporalQuery;
 
-    public OffsetTimeNodeMapper( TemporalQuery<T> temporalQuery) {
+    public OffsetTimeNodeMapper( ) {
         this.type = OffsetTime.class;
-        this.temporalQuery = temporalQuery;
+        this.temporalQuery = OffsetTime::from;
     }
 
     @Override
@@ -44,7 +44,7 @@ public final class OffsetTimeNodeMapper<T extends TemporalAccessor> implements T
     }
 
     @Override
-    public ValueNode valueToNode(T value, ObjectToNodeContext context) throws ObjectToNodeException {
+    public ValueNode valueToNode(OffsetTime value, ObjectToNodeContext context) throws ObjectToNodeException {
         var options = context.getMapperOptions(TemporalAccessorNodeMapperOptions.class, TEMPORAL_ACCESSOR_NODE_MAPPER_OPTIONS);
         // 处理时间戳格式
         if (options.useTimestamp()) {
@@ -64,7 +64,7 @@ public final class OffsetTimeNodeMapper<T extends TemporalAccessor> implements T
     }
 
     @Override
-    public T nodeToValue(ValueNode node, NodeToObjectContext context) throws NodeToObjectException {
+    public OffsetTime nodeToValue(ValueNode node, NodeToObjectContext context) throws NodeToObjectException {
         var options = context.getMapperOptions(TemporalAccessorNodeMapperOptions.class, TEMPORAL_ACCESSOR_NODE_MAPPER_OPTIONS);
         // 处理时间戳格式
         if (options.useTimestamp()) {
