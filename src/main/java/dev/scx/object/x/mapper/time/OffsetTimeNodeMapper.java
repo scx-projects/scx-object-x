@@ -21,7 +21,7 @@ import static dev.scx.reflect.ScxReflect.typeOf;
 /// OffsetTimeNodeMapper
 ///
 /// @author scx567888
-public final class OffsetTimeNodeMapper<T extends TemporalAccessor> implements TypeNodeMapper<OffsetTime, ValueNode> {
+public final class OffsetTimeNodeMapper implements TypeNodeMapper<OffsetTime, ValueNode> {
 
     private static final TemporalAccessorNodeMapperOptions TEMPORAL_ACCESSOR_NODE_MAPPER_OPTIONS = new TemporalAccessorNodeMapperOptions();
 

@@ -21,7 +21,7 @@ import static dev.scx.reflect.ScxReflect.typeOf;
 /// DayOfWeekNodeMapper
 ///
 /// @author scx567888
-public final class DayOfWeekNodeMapper<T extends TemporalAccessor> implements TypeNodeMapper<DayOfWeek, ValueNode> {
+public final class DayOfWeekNodeMapper implements TypeNodeMapper<DayOfWeek, ValueNode> {
 
     private static final TemporalAccessorNodeMapperOptions TEMPORAL_ACCESSOR_NODE_MAPPER_OPTIONS = new TemporalAccessorNodeMapperOptions();
 

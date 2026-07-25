@@ -21,7 +21,7 @@ import static dev.scx.reflect.ScxReflect.typeOf;
 /// LocalDateNodeMapper
 ///
 /// @author scx567888
-public final class LocalDateNodeMapper<T extends TemporalAccessor> implements TypeNodeMapper<LocalDate, ValueNode> {
+public final class LocalDateNodeMapper implements TypeNodeMapper<LocalDate, ValueNode> {
 
     private static final TemporalAccessorNodeMapperOptions TEMPORAL_ACCESSOR_NODE_MAPPER_OPTIONS = new TemporalAccessorNodeMapperOptions();
 

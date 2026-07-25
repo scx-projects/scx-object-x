@@ -21,7 +21,7 @@ import static dev.scx.reflect.ScxReflect.typeOf;
 /// MonthNodeMapper
 ///
 /// @author scx567888
-public final class MonthNodeMapper<T extends TemporalAccessor> implements TypeNodeMapper<Month, ValueNode> {
+public final class MonthNodeMapper implements TypeNodeMapper<Month, ValueNode> {
 
     private static final TemporalAccessorNodeMapperOptions TEMPORAL_ACCESSOR_NODE_MAPPER_OPTIONS = new TemporalAccessorNodeMapperOptions();
 

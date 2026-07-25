@@ -21,7 +21,7 @@ import static dev.scx.reflect.ScxReflect.typeOf;
 /// YearNodeMapper
 ///
 /// @author scx567888
-public final class YearNodeMapper<T extends TemporalAccessor> implements TypeNodeMapper<Year, ValueNode> {
+public final class YearNodeMapper implements TypeNodeMapper<Year, ValueNode> {
 
     private static final TemporalAccessorNodeMapperOptions TEMPORAL_ACCESSOR_NODE_MAPPER_OPTIONS = new TemporalAccessorNodeMapperOptions();
 

@@ -20,7 +20,7 @@ import static dev.scx.reflect.ScxReflect.typeOf;
 /// InstantNodeMapper
 ///
 /// @author scx567888
-public final class InstantNodeMapper<T extends TemporalAccessor> implements TypeNodeMapper<Instant, ValueNode> {
+public final class InstantNodeMapper implements TypeNodeMapper<Instant, ValueNode> {
 
     private static final TemporalAccessorNodeMapperOptions TEMPORAL_ACCESSOR_NODE_MAPPER_OPTIONS = new TemporalAccessorNodeMapperOptions();
 

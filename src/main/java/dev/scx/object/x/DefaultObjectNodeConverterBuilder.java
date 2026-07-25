@@ -86,18 +86,18 @@ public final class DefaultObjectNodeConverterBuilder {
 
 
         // 时间
-        this.registerMapper(new LocalDateTimeNodeMapper<>());
-        this.registerMapper(new LocalDateNodeMapper<>());
-        this.registerMapper(new LocalTimeNodeMapper<>());
-        this.registerMapper(new OffsetDateTimeNodeMapper<>());
-        this.registerMapper(new OffsetTimeNodeMapper<>());
-        this.registerMapper(new ZonedDateTimeNodeMapper<>());
-        this.registerMapper(new YearNodeMapper<>());
-        this.registerMapper(new MonthNodeMapper<>());
-        this.registerMapper(new MonthDayNodeMapper<>());
-        this.registerMapper(new YearMonthNodeMapper<>());
-        this.registerMapper(new DayOfWeekNodeMapper<>());
-        this.registerMapper(new InstantNodeMapper<>());
+        this.registerMapper(new LocalDateTimeNodeMapper());
+        this.registerMapper(new LocalDateNodeMapper());
+        this.registerMapper(new LocalTimeNodeMapper());
+        this.registerMapper(new OffsetDateTimeNodeMapper());
+        this.registerMapper(new OffsetTimeNodeMapper());
+        this.registerMapper(new ZonedDateTimeNodeMapper());
+        this.registerMapper(new YearNodeMapper());
+        this.registerMapper(new MonthNodeMapper());
+        this.registerMapper(new MonthDayNodeMapper());
+        this.registerMapper(new YearMonthNodeMapper());
+        this.registerMapper(new DayOfWeekNodeMapper());
+        this.registerMapper(new InstantNodeMapper());
         this.registerMapper(new TemporalAmountNodeMapper<>(Duration.class, Duration::toString, Duration::parse));
         this.registerMapper(new TemporalAmountNodeMapper<>(Period.class, Period::toString, Period::parse));
         this.registerMapper(new DateNodeMapper());

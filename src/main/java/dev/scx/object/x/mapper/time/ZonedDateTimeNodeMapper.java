@@ -21,7 +21,7 @@ import static dev.scx.reflect.ScxReflect.typeOf;
 /// ZonedDateTimeNodeMapper
 ///
 /// @author scx567888
-public final class ZonedDateTimeNodeMapper<T extends TemporalAccessor> implements TypeNodeMapper<ZonedDateTime, ValueNode> {
+public final class ZonedDateTimeNodeMapper implements TypeNodeMapper<ZonedDateTime, ValueNode> {
 
     private static final TemporalAccessorNodeMapperOptions TEMPORAL_ACCESSOR_NODE_MAPPER_OPTIONS = new TemporalAccessorNodeMapperOptions();
 
